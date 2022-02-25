@@ -4,7 +4,7 @@
   "tags": ["genomics", "transcriptomics", "rna-seq", "fastq", "t-cell receptor"],
   "authors": ["tercen"],
   "urls": ["https://github.com/tercen/tracer_docker_operator"],
-  "container": "fcadete/tracer_docker_operator:0.0.1.7",
+  "container": "fcadete/tracer_docker_operator:0.0.2",
   "properties": [
     {
       "kind": "EnumeratedProperty",
