@@ -107,8 +107,8 @@ WORKDIR /operator/TraCeR_operator
 
 RUN echo "PATH=${PATH}" >> /usr/local/lib/R/etc/Renviron
 
-RUN echo "25/02/2022 21:55" && git pull
-RUN echo "25/02/2022 21:55" && git checkout
+RUN echo "08/03/2022 21:37" && git pull
+RUN echo "08/03/2022 21:37" && git checkout
 
 RUN R -e "install.packages('renv')"
 RUN R -e "renv::consent(provided=TRUE);renv::restore(confirm=FALSE)"
