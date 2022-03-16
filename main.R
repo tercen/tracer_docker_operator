@@ -80,7 +80,7 @@ samples = progressr::with_progress({
     sample_name <- str_split(basename(r1_file),
                              "_R1")[[1]][[1]]
 
-    cmd = '/tracer-0.6.0/tracer'
+    cmd = '/tracer/tracer'
     args = paste('assemble',
                  '--ncores 2', #parallel::detectCores(),
                  '--config_file /tercen_tracer.conf',

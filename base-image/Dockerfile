@@ -49,11 +49,10 @@ RUN wget -q https://github.com/COMBINE-lab/salmon/releases/download/v1.4.0/salmo
 
 ENV PATH="/salmon-latest_linux_x86_64/bin:${PATH}"
 
-## install python and required packages
+### install python and required packages
 RUN apt-get update && apt-get install -y python3-pip && \
     pip3 install python-dateutil && \
     pip3 install numpy && \
-    pip3 install biopython && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 1 && \
     apt-get install -y samtools
 
@@ -89,11 +88,9 @@ ENV PATH="/kallisto/:${PATH}"
 
 # install graphviz
 RUN apt-get install -y graphviz && \
-    wget -q https://github.com/Teichlab/tracer/archive/refs/tags/v0.6.0.tar.gz && \
-    tar xzf v0.6.0.tar.gz && \
-    rm v0.6.0.tar.gz && \
-    chmod u+x tracer-0.6.0/tracer && \
-    cd tracer-0.6.0 && \
+    git clone https://github.com/tercen/tracer && \
+    chmod u+x tracer/tracer && \
+    cd /tracer && \
     pip3 install -r requirements.txt
 
 WORKDIR /
