@@ -3,11 +3,15 @@
 name: Build base image
 
 on:
-  workflow_dispatch:
-    inputs:
-      tags:
-        required: false
-        description: 'Test scenario tags'
+  push:
+    branches: [main, master]
+
+#on:
+#  workflow_dispatch:
+#    inputs:
+#      tags:
+#        required: false
+#        description: 'Test scenario tags'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
