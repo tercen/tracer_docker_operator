@@ -1,4 +1,4 @@
-FROM tercen/dartrusttidy:travis-17
+FROM tercen/runtime-r40:4.0.4-1
 
 # get bowtie2 binaries and add them to the PATH
 RUN wget -q https://github.com/BenLangmead/bowtie2/releases/download/v2.4.2/bowtie2-2.4.2-linux-x86_64.zip && \
@@ -110,6 +110,10 @@ RUN echo "PATH=${PATH}" >> /usr/local/lib/R/etc/Renviron
 #RUN R -e "renv::init(bare = TRUE)"
 #RUN R -e "renv::install('askpass')"
 #RUN R -e "renv::hydrate()"
+
+ENV RENV_VERSION 0.13.0
+RUN R -e "install.packages('remotes', repos = c(CRAN = 'https://cran.r-project.org'))"
+RUN R -e "remotes::install_github('rstudio/renv@${RENV_VERSION}')"
 
 RUN R -e "renv::consent(provided=TRUE);renv::restore(confirm=FALSE)"
 
