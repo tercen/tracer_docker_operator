@@ -100,7 +100,5 @@ WORKDIR /
 # copy our configuration file into the image
 COPY tercen_tracer.conf /
 
-
-
 RUN echo "PATH=${PATH}" >> /usr/local/lib/R/etc/Renviron
 

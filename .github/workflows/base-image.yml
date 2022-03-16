@@ -2,9 +2,14 @@
 
 name: Build base image
 
+#on:
+#  push:
+#    branches: [main, master]
+
 on:
   push:
-    branches: [main, master]
+    tags:
+      - '*-base'
 
 #on:
 #  workflow_dispatch:
@@ -27,7 +32,7 @@ jobs:
       - name: ENV
         run: |
           echo "REPO_NAME=${{ github.event.repository.name }}" >> $GITHUB_ENV
-          echo "TAG=1.0.0" >> $GITHUB_ENV
+          echo "TAG=${GITHUB_REF##*/}" >> $GITHUB_ENV
           echo "DOCKER_IMAGE=tercen/${{ github.event.repository.name }}_base" >> $GITHUB_ENV
       - name: Build docker image
         run: |
