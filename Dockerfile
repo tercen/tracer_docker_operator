@@ -98,19 +98,18 @@ COPY tercen_tracer.conf /
 
 COPY collect_TRA_TRB_in_fasta.py /
 
+COPY . /operator
+WORKDIR /operator
+
 USER root
 WORKDIR /operator
 
-RUN git clone https://github.com/tercen/TraCeR_operator
-
-WORKDIR /operator/TraCeR_operator
-
 RUN echo "PATH=${PATH}" >> /usr/local/lib/R/etc/Renviron
 
-RUN echo "12/03/2022 18:26" && git pull
-RUN echo "12/03/2022 18:26" && git checkout
+#RUN R -e "renv::init(bare = TRUE)"
+#RUN R -e "renv::install('askpass')"
+#RUN R -e "renv::hydrate()"
 
-RUN R -e "install.packages('renv')"
 RUN R -e "renv::consent(provided=TRUE);renv::restore(confirm=FALSE)"
 
 ENTRYPOINT [ "R","--no-save","--no-restore","--no-environ","--slave","-f","main.R", "--args"]
