@@ -1,8 +1,9 @@
-FROM tercen/runtime-r40:4.0.4-1
+#FROM tercen/runtime-r40:4.0.4-1
+FROM tercen/dartrusttidy:travis-17
 
 # get bowtie2 binaries and add them to the PATH
 RUN wget -q https://github.com/BenLangmead/bowtie2/releases/download/v2.4.2/bowtie2-2.4.2-linux-x86_64.zip && \
-    unzip bowtie2-2.4.2-linux-x86_64.zip && \
+    unzip -q bowtie2-2.4.2-linux-x86_64.zip && \
     rm bowtie2-2.4.2-linux-x86_64.zip
 
 ENV PATH="/bowtie2-2.4.2-linux-x86_64/:${PATH}"
@@ -41,8 +42,8 @@ RUN cp -r /ncbi-igblast-1.17.1/internal_data /ncbi-igblast-1.17.1/bin/ && \
 WORKDIR /
 
 # Get Salmon binaries and add them to the PATH
-RUN wget https://github.com/COMBINE-lab/salmon/releases/download/v1.4.0/salmon-1.4.0_linux_x86_64.tar.gz && \
-    tar xzvf salmon-1.4.0_linux_x86_64.tar.gz && \
+RUN wget -q https://github.com/COMBINE-lab/salmon/releases/download/v1.4.0/salmon-1.4.0_linux_x86_64.tar.gz && \
+    tar xzf salmon-1.4.0_linux_x86_64.tar.gz && \
     rm salmon-1.4.0_linux_x86_64.tar.gz
 
 ENV PATH="/salmon-latest_linux_x86_64/bin:${PATH}"
