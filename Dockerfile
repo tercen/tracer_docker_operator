@@ -1,5 +1,5 @@
-#FROM tercen/runtime-r40:4.0.4-1
-FROM tercen/dartrusttidy:travis-17
+FROM tercen/runtime-r40:4.0.4-1
+#FROM tercen/dartrusttidy:travis-17
 
 # get bowtie2 binaries and add them to the PATH
 RUN wget -q https://github.com/BenLangmead/bowtie2/releases/download/v2.4.2/bowtie2-2.4.2-linux-x86_64.zip && \
@@ -17,7 +17,8 @@ ENV PATH="/cmake-3.20.1-linux-x86_64/bin:${PATH}"
 
 
 # get Trinity, install it
-RUN apt install -y libbz2-dev liblzma-dev && \
+RUN apt update && \
+    apt install -y libbz2-dev liblzma-dev && \
     wget -q https://github.com/trinityrnaseq/trinityrnaseq/releases/download/v2.12.0/trinityrnaseq-v2.12.0.FULL.tar.gz && \
     tar xzf trinityrnaseq-v2.12.0.FULL.tar.gz && \
     rm trinityrnaseq-v2.12.0.FULL.tar.gz
