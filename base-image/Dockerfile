@@ -17,8 +17,8 @@ ENV PATH="/cmake-3.20.1-linux-x86_64/bin:${PATH}"
 
 
 # get Trinity, install it
-RUN apt update && \
-    apt install -y libbz2-dev liblzma-dev && \
+RUN apt-get update && \
+    apt-get install -y libbz2-dev liblzma-dev && \
     wget -q https://github.com/trinityrnaseq/trinityrnaseq/releases/download/v2.12.0/trinityrnaseq-v2.12.0.FULL.tar.gz && \
     tar xzf trinityrnaseq-v2.12.0.FULL.tar.gz && \
     rm trinityrnaseq-v2.12.0.FULL.tar.gz
@@ -49,12 +49,13 @@ RUN wget -q https://github.com/COMBINE-lab/salmon/releases/download/v1.4.0/salmo
 
 ENV PATH="/salmon-latest_linux_x86_64/bin:${PATH}"
 
-# install python and required packages
-RUN apt install -y python3-pip && \
+## install python and required packages
+RUN apt-get update && apt-get install -y python3-pip && \
+    pip3 install python-dateutil && \
     pip3 install numpy && \
     pip3 install biopython && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 1 && \
-    apt install -y samtools
+    apt-get install -y samtools
 
 # install jellyfish
 RUN wget -q https://github.com/gmarcais/Jellyfish/releases/download/v2.3.0/jellyfish-2.3.0.tar.gz && \
@@ -71,7 +72,7 @@ RUN ./configure && \
 WORKDIR /
 
 # install java
-RUN apt install -y default-jre
+RUN apt-get install -y default-jre
 
 # download transcriptomes
 RUN wget -q https://github.com/pachterlab/kallisto-transcriptome-indices/releases/download/ensembl-96/mus_musculus.tar.gz && \
@@ -87,7 +88,7 @@ RUN wget -q https://github.com/pachterlab/kallisto-transcriptome-indices/release
 ENV PATH="/kallisto/:${PATH}"
 
 # install graphviz
-RUN apt install -y graphviz && \
+RUN apt-get install -y graphviz && \
     wget -q https://github.com/Teichlab/tracer/archive/refs/tags/v0.6.0.tar.gz && \
     tar xzf v0.6.0.tar.gz && \
     rm v0.6.0.tar.gz && \
