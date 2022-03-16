@@ -1,5 +1,7 @@
 FROM tercen/tracer_docker_operator_base:1.0.0
 
+COPY collect_TRA_TRB_in_fasta.py /
+
 USER root
 
 COPY . /operator
