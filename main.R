@@ -89,11 +89,11 @@ samples = progressr::with_progress({
                  sample_name, output_path,
                  sep = ' ')
 
-    exitCode =   system(paste(cmd, args), ignore.stdout = TRUE, ignore.stderr = TRUE)
-#     exitCode =   system(paste(cmd, args), ignore.stdout = FALSE, ignore.stderr = FALSE)
+#     exitCode =   system(paste(cmd, args), ignore.stdout = TRUE, ignore.stderr = TRUE)
+    exitCode =   system(paste(cmd, args), ignore.stdout = FALSE, ignore.stderr = FALSE)
 
     if (exitCode != 0) {
-#       stop(paste("ERROR: tracer exited with code ", exitCode, " for sample ", sample_name))
+      stop(paste("ERROR: tracer exited with code ", exitCode, " for sample ", sample_name))
       status <- "failed"
     } else {
       status <- "succeeded"
