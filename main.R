@@ -80,7 +80,7 @@ samples = progressr::with_progress({
     sample_name <- str_split(basename(r1_file),
                              "_R1")[[1]][[1]]
 
-    cmd = '/tracer/tracer'
+    cmd = '/tracer-0.6.0/tracer'
     args = paste('assemble',
                  '--ncores 2', #parallel::detectCores(),
                  '--config_file /tercen_tracer.conf',
@@ -89,11 +89,11 @@ samples = progressr::with_progress({
                  sample_name, output_path,
                  sep = ' ')
 
-#     exitCode =   system(paste(cmd, args), ignore.stdout = TRUE, ignore.stderr = TRUE)
-    exitCode =   system(paste(cmd, args), ignore.stdout = FALSE, ignore.stderr = FALSE)
+    exitCode =   system(paste(cmd, args), ignore.stdout = TRUE, ignore.stderr = TRUE)
+#     exitCode =   system(paste(cmd, args), ignore.stdout = FALSE, ignore.stderr = FALSE)
 
     if (exitCode != 0) {
-      stop(paste("ERROR: tracer exited with code ", exitCode, " for sample ", sample_name))
+#       stop(paste("ERROR: tracer exited with code ", exitCode, " for sample ", sample_name))
       status <- "failed"
     } else {
       status <- "succeeded"
