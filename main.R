@@ -63,7 +63,7 @@ output_folder <- paste0(output_volume, "/",
 output_path <- paste0("/var/lib/tercen/share/",
                       output_folder, "/")
 
-system(paste("mkdir -p", output_path))
+# system(paste("mkdir -p", output_path))
 
 r1_files <- list.files(input_path, "_R1.*q.gz$",
                        full.names = TRUE)
