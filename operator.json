@@ -1,10 +1,10 @@
 {
-  "name": "tracer",
+  "name": "Tracer",
   "description": "Quantify TCR reads with TraCeR",
   "tags": ["genomics", "transcriptomics", "rna-seq", "fastq", "t-cell receptor"],
   "authors": ["tercen"],
   "urls": ["https://github.com/tercen/tracer_docker_operator"],
-  "container": "fcadete/tracer_docker_operator:0.0.2",
+  "container": "tercen/TraCeR_docker_operator:latest",
   "properties": [
     {
       "kind": "EnumeratedProperty",
