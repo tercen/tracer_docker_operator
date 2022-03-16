@@ -47,13 +47,12 @@ input_folder <- paste(parts[-1], collapse="/")
 # Define input and output paths
 input_path <- paste0("/var/lib/tercen/share/", volume, "/", input_folder)
 
-
 if( dir.exists(input_path) == FALSE) {
-  stop(paste("ERROR:", input_folder, "folder does not exist in project write folder."))
+  stop(paste("ERROR:", input_folder, "folder does not exist in project volume ", volume ))
 }
 
 if (length(dir(input_path)) == 0) {
-  stop(paste("ERROR:", input_folder, "folder is empty."))
+  stop(paste("ERROR:", input_folder, "folder is empty  in project volume ", volume))
 }
 
 output_volume = "write"

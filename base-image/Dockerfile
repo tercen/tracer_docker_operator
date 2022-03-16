@@ -89,8 +89,8 @@ ENV PATH="/kallisto/:${PATH}"
 # install graphviz
 RUN apt install -y graphviz && \
     wget -q https://github.com/Teichlab/tracer/archive/refs/tags/v0.6.0.tar.gz && \
-    tar xzf tracer-0.6.0.tar.gz && \
-    rm tracer-0.6.0.tar.gz && \
+    tar xzf v0.6.0.tar.gz && \
+    rm v0.6.0.tar.gz && \
     chmod u+x tracer-0.6.0/tracer && \
     cd racer-0.6.0 && \
     pip3 install -r requirements.txt
