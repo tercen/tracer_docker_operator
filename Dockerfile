@@ -3,14 +3,14 @@ FROM tercen/runtime-r40:4.0.4-1
 # get bowtie2 binaries and add them to the PATH
 RUN wget -q https://github.com/BenLangmead/bowtie2/releases/download/v2.4.2/bowtie2-2.4.2-linux-x86_64.zip && \
     unzip bowtie2-2.4.2-linux-x86_64.zip && \
-    rm bowtie2-2.4.2-linux-x86_64.zip \
+    rm bowtie2-2.4.2-linux-x86_64.zip
 
 ENV PATH="/bowtie2-2.4.2-linux-x86_64/:${PATH}"
 
 # get cmake (required to install trinity)
 RUN wget -q https://github.com/Kitware/CMake/releases/download/v3.20.1/cmake-3.20.1-linux-x86_64.tar.gz && \
     tar xzf cmake-3.20.1-linux-x86_64.tar.gz && \
-    rm cmake-3.20.1-linux-x86_64.tar.gz \
+    rm cmake-3.20.1-linux-x86_64.tar.gz
 
 ENV PATH="/cmake-3.20.1-linux-x86_64/bin:${PATH}"
 
@@ -30,19 +30,20 @@ WORKDIR /
 RUN wget -q https://ftp.ncbi.nih.gov/blast/executables/igblast/release/1.17.1/ncbi-igblast-1.17.1-x64-linux.tar.gz && \
     tar xzf ncbi-igblast-1.17.1-x64-linux.tar.gz && \
     rm ncbi-igblast-1.17.1-x64-linux.tar.gz
+
 ENV PATH="/ncbi-igblast-1.17.1/bin:${PATH}"
 WORKDIR /ncbi-igblast-1.17.1/bin
 ENV IGDATA=/ncbi-igblast-1.17.1/bin
 
 RUN cp -r /ncbi-igblast-1.17.1/internal_data /ncbi-igblast-1.17.1/bin/ && \
-    cp -r /ncbi-igblast-1.17.1/optional_file /ncbi-igblast-1.17.1/bin/ \
+    cp -r /ncbi-igblast-1.17.1/optional_file /ncbi-igblast-1.17.1/bin/
 
 WORKDIR /
 
 # Get Salmon binaries and add them to the PATH
 RUN wget https://github.com/COMBINE-lab/salmon/releases/download/v1.4.0/salmon-1.4.0_linux_x86_64.tar.gz && \
     tar xzvf salmon-1.4.0_linux_x86_64.tar.gz && \
-    rm salmon-1.4.0_linux_x86_64.tar.gz \
+    rm salmon-1.4.0_linux_x86_64.tar.gz
 
 ENV PATH="/salmon-latest_linux_x86_64/bin:${PATH}"
 
@@ -86,7 +87,7 @@ ENV PATH="/kallisto/:${PATH}"
 # install graphviz
 RUN apt install -y graphviz && \
     git clone http://www.github.com/teichlab/tracer && \
-    chmod u+x tracer/tracer \
+    chmod u+x tracer/tracer
 
 WORKDIR /tracer
 
