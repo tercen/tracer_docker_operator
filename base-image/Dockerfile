@@ -92,7 +92,7 @@ RUN apt install -y graphviz && \
     tar xzf v0.6.0.tar.gz && \
     rm v0.6.0.tar.gz && \
     chmod u+x tracer-0.6.0/tracer && \
-    cd racer-0.6.0 && \
+    cd tracer-0.6.0 && \
     pip3 install -r requirements.txt
 
 WORKDIR /
